@@ -21,4 +21,10 @@ fun main() {
     val myDoubleNumber = 2.7
 
     println("myFloatNumber = $myFloatNumber and myDoubleNumber = $myDoubleNumber")
+
+    val myCharValue = 'a'
+    println(myCharValue)
+
+    val myBooleanValue = true
+    println(myBooleanValue)
 }
