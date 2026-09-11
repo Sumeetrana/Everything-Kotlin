@@ -1,48 +1,27 @@
 fun main() {
-    sayHello("Alex")
-    sayHello("John")
+//    for (i in 1..10) {
+//        println(i)
+//    }
 
-    val hasInternetConnection = true
+//    for(i in 1 until 10) {
+//        println(i)
+//    }
 
-    if (hasInternetConnection) {
-        getData("Some data")
-    } else {
-        showMessage()
-    }
+//    for(i in 10 downTo 1) {
+//        println(i)
+//    }
 
-    println(getMax(5,6))
-    println(getMax(5.6,9.7))
+//    for(i in 1 until 10 step 2) {
+//        println(i)
+//    }
 
-    println(sum(2,3,4,5,6,7,8,9))
-}
+    var number = 0
 
-fun sayHello(name: String) {
-    println("Hello, $name")
-}
+//    while (number < 10) {
+//        println(number++)
+//    }
 
-fun getData(data: String) {
-    println("Your data is $data")
-}
-
-fun showMessage() {
-    println("There is not internet connection")
-}
-
-fun getMax(a: Int, b: Int): Int {
-    return if (a > b) a else b
-}
-
-fun getMax(a: Double, b: Double) = if (a > b) a else b
-
-fun sum(vararg numbers: Int): Int {
-    var result = 0
-    for (number in numbers) {
-        result += number
-    }
-
-    numbers.forEach {
-        println(it)
-    }
-
-    return result
+    do {
+        println(++number)
+    } while(number < 10)
 }
