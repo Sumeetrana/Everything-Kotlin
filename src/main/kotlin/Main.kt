@@ -1,27 +1,19 @@
 fun main() {
-//    for (i in 1..10) {
-//        println(i)
-//    }
+    val names = arrayOf("John", "Stephen", "Megan")
+    println("${names[0]} ${names[1]} ${names[2]}")
+    println("${names.size}")
 
-//    for(i in 1 until 10) {
-//        println(i)
-//    }
+    val mixed = arrayOf<Any>(4,5,6,7, "Name 1", "a")
 
-//    for(i in 10 downTo 1) {
-//        println(i)
-//    }
+    for (i in mixed) {
+        println("All items: $i")
 
-//    for(i in 1 until 10 step 2) {
-//        println(i)
-//    }
+        if(i is Int) {
+            println("Only integers: $i")
+        }
 
-    var number = 0
-
-//    while (number < 10) {
-//        println(number++)
-//    }
-
-    do {
-        println(++number)
-    } while(number < 10)
+        if(i is String) {
+            println("Only string: $i")
+        }
+    }
 }
