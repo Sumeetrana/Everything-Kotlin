@@ -1,19 +1,23 @@
 fun main() {
-    val names = arrayOf("John", "Stephen", "Megan")
-    println("${names[0]} ${names[1]} ${names[2]}")
-    println("${names.size}")
+    val car1 = Car("Tesla", "S Plaid", "Red", 4)
 
-    val mixed = arrayOf<Any>(4,5,6,7, "Name 1", "a")
+    println("Name = ${car1.name}")
+    println("Model = ${car1.model}")
+    println("Color = ${car1.color}")
+    println("Doors = ${car1.doors}")
 
-    for (i in mixed) {
-        println("All items: $i")
+    car1.move(car1.name)
+    car1.stop()
+}
 
-        if(i is Int) {
-            println("Only integers: $i")
-        }
-
-        if(i is String) {
-            println("Only string: $i")
-        }
+class Car(var name: String, var model: String, var color: String, var doors: Int) {
+    fun move(carName: String) {
+        println("The car $carName is moving")
     }
+
+    fun stop() {
+        println("The car has stopped")
+    }
+
+
 }
