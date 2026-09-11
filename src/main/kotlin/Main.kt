@@ -1,8 +1,33 @@
 fun main() {
-    var text: String? = "Name"
+    sayHello("Alex")
+    sayHello("John")
 
-    println(text?.length)
-    text = null
-    val text2 = text ?: "The variable is null"
-    println(text2)
+    val hasInternetConnection = true
+
+    if (hasInternetConnection) {
+        getData("Some data")
+    } else {
+        showMessage()
+    }
+
+    println(getMax(5,6))
+    println(getMax(5.6,9.7))
 }
+
+fun sayHello(name: String) {
+    println("Hello, $name")
+}
+
+fun getData(data: String) {
+    println("Your data is $data")
+}
+
+fun showMessage() {
+    println("There is not internet connection")
+}
+
+fun getMax(a: Int, b: Int): Int {
+    return if (a > b) a else b
+}
+
+fun getMax(a: Double, b: Double) = if (a > b) a else b
