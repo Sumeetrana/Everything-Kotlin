@@ -12,6 +12,8 @@ fun main() {
 
     println(getMax(5,6))
     println(getMax(5.6,9.7))
+
+    println(sum(2,3,4,5,6,7,8,9))
 }
 
 fun sayHello(name: String) {
@@ -31,3 +33,16 @@ fun getMax(a: Int, b: Int): Int {
 }
 
 fun getMax(a: Double, b: Double) = if (a > b) a else b
+
+fun sum(vararg numbers: Int): Int {
+    var result = 0
+    for (number in numbers) {
+        result += number
+    }
+
+    numbers.forEach {
+        println(it)
+    }
+
+    return result
+}
