@@ -1,27 +1,22 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val success = Result.Success("SUCCESS!")
-    val error = Result.Error("FAILED!")
-    val progression = Result.Progress("Progression!")
 
-    getData(progression)
 }
 
-fun getData(result: Result) {
-    when(result) {
-        is Result.Error -> result.showMessage()
-        is Result.Success -> result.showMessage()
-        is Result.Progress -> result.showMessage()
-    }
+abstract class Vehicle() {
+    abstract fun move()
+
+    abstract fun stop()
 }
 
-sealed class Result(val message: String) {
-    fun showMessage() {
-        println("Result: $message")
+class Car(var name: String, var color: String, val engines: Int, val doors: int): Vehicle() {
+    override fun move() {
+        TODO("Not yet implemented")
     }
 
-    class Success(message: String): Result(message)
-    class Error(message: String): Result(message)
-    class Progress(message: String): Result(message)
+    override fun stop() {
+        TODO("Not yet implemented")
+    }
+
 }
