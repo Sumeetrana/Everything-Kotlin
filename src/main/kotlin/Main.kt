@@ -1,34 +1,27 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val car = Car("BMW", "Red", 1, 4)
-    val plane = Plane("Airbus", "White", 4, 8)
+    val success = Result.Success("SUCCESS!")
+    val error = Result.Error("FAILED!")
+    val progression = Result.Progress("Progression!")
 
-    car.move()
-    plane.move()
+    getData(progression)
 }
 
-open class Vehicle(val name: String, val color: String)  {
-    open fun move() {
-        println("$name is moving")
-    }
-
-    open fun stop() {
-        println("$name is stopped")
+fun getData(result: Result) {
+    when(result) {
+        is Result.Error -> result.showMessage()
+        is Result.Success -> result.showMessage()
+        is Result.Progress -> result.showMessage()
     }
 }
 
-class Car(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
-
-}
-
-class Plane(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
-    override fun move() {
-        flying()
-        super.move()
+sealed class Result(val message: String) {
+    fun showMessage() {
+        println("Result: $message")
     }
 
-    fun flying() {
-        println("The plane is flying")
-    }
+    class Success(message: String): Result(message)
+    class Error(message: String): Result(message)
+    class Progress(message: String): Result(message)
 }
