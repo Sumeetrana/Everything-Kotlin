@@ -20,6 +20,15 @@ fun main() {
     println("Age = ${user3.age}")
 }
 
-class User(var firstName: String = "FirstName", var lastName: String = "LastName", var age: Int = 0) {
+class User(firstName: String = "FirstName", var lastName: String = "LastName", var age: Int = 0) {
+    var firstName = firstName
+        get() {
+            return "Called getter $field"
+        }
 
+        set(value) {
+            println("Called setter $field")
+            field = value
+        }
+  }
 }
