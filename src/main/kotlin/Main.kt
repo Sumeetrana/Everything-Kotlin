@@ -1,10 +1,14 @@
 fun main() {
-    val user = User("Alex", "Dobbin", 23)
-
-    user.favoriteMovie = "Interstellar"
-    println(user.favoriteMovie)
+    val result = Calculator.sum(5, 10)
+    println(Calculator.max)
+    println(result)
 }
 
-class User(firstName: String = "FirstName", var lastName: String = "LastName", var age: Int = 0) {
-    lateinit var favoriteMovie: String
+class Calculator {
+    companion object {
+        var max =  100
+        fun sum(a: Int, b: Int): Int {
+            return a + b
+        }
+    }
 }
