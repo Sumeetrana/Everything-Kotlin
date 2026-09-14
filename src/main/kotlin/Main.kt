@@ -1,13 +1,16 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    println(Database)
-    println(Database)
+    val user1 = User("Alex", "Dobbin", 23)
+    val user2 by lazy {
+        User("Lazy", "Person", 10)
+    }
 
+    println(user2.firstName)
 }
 
-object Database {
+class User(var firstName: String, var lastName: String, var age: Int) {
     init {
-        println("Database created")
+        println("User: $firstName was created")
     }
 }
