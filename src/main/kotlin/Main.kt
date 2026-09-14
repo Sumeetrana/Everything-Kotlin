@@ -1,16 +1,36 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val user1 = User("Alex", "Dobbin", 23)
-    val user2 by lazy {
-        User("Lazy", "Person", 10)
-    }
+//    println(Direction.EAST)
+//    println(Direction.WEST)
+//    println(Direction.NORTH)
+//    println(Direction.SOUTH)
 
-    println(user2.firstName)
+//    for(direction in Direction.values()) {
+//        println(direction)
+//    }
+
+//    println(Direction.NORTH.direction)
+//
+//    Direction.NORTH.printData()
+
+    val direction = Direction.EAST
+
+    when(direction) {
+        Direction.EAST -> println("The direction is EAST")
+        Direction.WEST -> println("The direction is WEST")
+        Direction.NORTH -> println("The direction is NORTH")
+        Direction.SOUTH -> println("The direction is SOUTH")
+    }
 }
 
-class User(var firstName: String, var lastName: String, var age: Int) {
-    init {
-        println("User: $firstName was created")
+enum class Direction(var direction: String, var distance: Int) {
+    NORTH("north", 10),
+    SOUTH("south", 5),
+    EAST("east", 4),
+    WEST("west", 3); // Notice the semicolon here, before declaring a function inside the enum class
+
+    fun printData() {
+        println("Direction = $direction and Distance = $distance")
     }
 }
