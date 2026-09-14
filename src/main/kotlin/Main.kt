@@ -1,14 +1,13 @@
+import javax.xml.crypto.Data
+
 fun main() {
-    val result = Calculator.sum(5, 10)
-    println(Calculator.max)
-    println(result)
+    println(Database)
+    println(Database)
+
 }
 
-class Calculator {
-    companion object {
-        var max =  100
-        fun sum(a: Int, b: Int): Int {
-            return a + b
-        }
+object Database {
+    init {
+        println("Database created")
     }
 }
