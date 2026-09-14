@@ -1,16 +1,24 @@
 fun main() {
-    val user1 = User("Alex", "Dobinca", 23)
-    val user2 = User("Smith", "Dobinca", 23)
+    val user1 = User("Alex")
+    val user2 = User("Smith", "Dobinca")
 
-    println("User1: ${user1.firstName}")
-    println("User2: ${user2.firstName}")
+    println("Name = ${user1.firstName}")
+    println("LastName = ${user1.lastName}")
+    println("Age = ${user1.age}")
+
+    println("\n")
+
+    println("Name = ${user2.firstName}")
+    println("LastName = ${user2.lastName}")
+    println("Age = ${user2.age}")
 }
 
 class User(var firstName: String, var lastName: String, var age: Int) {
-    init {
-        if(!firstName.lowercase().startsWith("a")) {
-            firstName = "User"
-            println("The name doesn't start with the letter 'a' or 'A'")
-        }
+    constructor(firstName: String): this(firstName, "LastName", 0) {
+    println("2nd")
+    }
+
+    constructor(firstName: String, lastName: String): this(firstName, lastName, 0) {
+        println("3rd")
     }
 }
