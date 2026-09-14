@@ -4,24 +4,28 @@ fun main() {
 
 }
 
-interface Engine {
-    fun startEngine()
-}
+class App: A by FirstDelegate(), B by SecondDelegate() {
+    override fun print() {
+        TODO("Not yet implemented")
+    }
 
-class Car(val name: String, val color: String): Engine {
-    override fun startEngine() {
-        println("The car is starting the engine")
+    override fun print2() {
+        TODO("Not yet implemented")
     }
 }
 
-class Truck(val name: String, val color: String): Engine {
-    override fun startEngine() {
-        println("The truck is starting the engine")
-    }
+interface A {
+    fun print()
 }
 
-class Plane(val name: String, val color: String): Engine {
-    override fun startEngine() {
-        println("The plane is starting the engine")
-    }
+interface B {
+    fun print2()
+}
+
+class FirstDelegate: A {
+    override fun print() {}
+}
+
+class SecondDelegate: B {
+    override fun print2() {}
 }
