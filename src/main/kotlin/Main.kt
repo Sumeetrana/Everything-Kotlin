@@ -1,6 +1,7 @@
 fun main() {
     val user1 = User("Alex")
     val user2 = User("Smith", "Dobinca")
+    val user3 = User()
 
     println("Name = ${user1.firstName}")
     println("LastName = ${user1.lastName}")
@@ -11,14 +12,14 @@ fun main() {
     println("Name = ${user2.firstName}")
     println("LastName = ${user2.lastName}")
     println("Age = ${user2.age}")
+
+    println("\n")
+
+    println("Name = ${user3.firstName}")
+    println("LastName = ${user3.lastName}")
+    println("Age = ${user3.age}")
 }
 
-class User(var firstName: String, var lastName: String, var age: Int) {
-    constructor(firstName: String): this(firstName, "LastName", 0) {
-    println("2nd")
-    }
+class User(var firstName: String = "FirstName", var lastName: String = "LastName", var age: Int = 0) {
 
-    constructor(firstName: String, lastName: String): this(firstName, lastName, 0) {
-        println("3rd")
-    }
 }
