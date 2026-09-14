@@ -1,14 +1,34 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val listView = ListView(arrayOf("Name 1", "Name 2", "Name 3"))
-    listView.ListViewItems().displayItem(1)
+    val car = Car("BMW", "Red", 1, 4)
+    val plane = Plane("Airbus", "White", 4, 8)
+
+    car.move()
+    plane.move()
 }
 
-class ListView(val items: Array<String>) {
-    inner class ListViewItems() {
-        fun displayItem(position: Int) {
-            println(items[position])
-        }
+open class Vehicle(val name: String, val color: String)  {
+    open fun move() {
+        println("$name is moving")
+    }
+
+    open fun stop() {
+        println("$name is stopped")
+    }
+}
+
+class Car(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
+
+}
+
+class Plane(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
+    override fun move() {
+        flying()
+        super.move()
+    }
+
+    fun flying() {
+        println("The plane is flying")
     }
 }
