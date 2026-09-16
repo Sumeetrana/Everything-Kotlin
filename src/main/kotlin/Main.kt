@@ -1,22 +1,13 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val footballPlayer1 = FootballPlayer("Messi")
-    val footballPlayer2 = FootballPlayer("Ronaldo")
-
-    val baseballPlayer1 = BaseballPlayer("Bb1")
-    val baseballPlayer2 = BaseballPlayer("Bb2")
-
-    val footballTeam = Team("Barcelona", mutableListOf(footballPlayer1))
-    footballTeam.addPlayers(footballPlayer2)
-    footballTeam.addPlayers(footballPlayer1)
-
-    val baseballTeam = Team("Chicago bulls", mutableListOf(baseballPlayer1))
-    baseballTeam.addPlayers(baseballPlayer2)
-    baseballTeam.addPlayers(baseballPlayer1)
+    val footballTeam = Team<Player>(
+        name = "Barcelona",
+        mutableListOf<FootballPlayer>(FootballPlayer("messi"), FootballPlayer("ronaldo"))
+    )
 }
 
-class Team<T: Player>(val name: String, val players: MutableList<T>) {
+class Team<T: Player>(val name: String, val players: MutableList<out T>) {
     fun addPlayers(player: T) {
         if (players.contains(player)) {
             println("Player ${player.name} is already playing!")
@@ -31,3 +22,7 @@ open class Player(val name: String)
 
 class FootballPlayer(name: String): Player(name)
 class BaseballPlayer(name: String): Player(name)
+
+open class GamesPlayer(name: String): Player(name)
+
+class CounterStrikePlayer(name: String): GamesPlayer(name)
