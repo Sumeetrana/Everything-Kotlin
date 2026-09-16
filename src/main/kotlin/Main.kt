@@ -1,10 +1,21 @@
+import org.w3c.dom.css.Counter
 import javax.xml.crypto.Data
 
 fun main() {
-    val mixedList = mutableListOf(1,2,3,4,5, 'a', 'b', 'c', 'd', 'e', 'f', "Hello", "World")
-    println(getSpecificTypes<Char>(mixedList))
-    println(getSpecificTypes<Int>(mixedList))
-    println(getSpecificTypes<String>(mixedList))
+    val footballTeam = Team<Player>(
+        "Barcelona",
+        mutableListOf<FootballPlayer>(FootballPlayer("Player 1"), FootballPlayer("Player 2"), FootballPlayer("Player 3")))
+
+    val gamesPlayer = Team<GamesPlayer>(
+        "Games",
+        mutableListOf(CounterStrikePlayer("Player 1"), CounterStrikePlayer("Player 2")),
+    )
+
+    addPlayer(CounterStrikePlayer("CSPlayer"))
+}
+
+interface Listener {
+    fun listen()
 }
 
 inline fun <reified T> getSpecificTypes(list: List<Any>): List<T> {
@@ -19,7 +30,7 @@ inline fun <reified T> getSpecificTypes(list: List<Any>): List<T> {
     return newList
 }
 
-class Team<T: Player>(val name: String, val players: MutableList<in T>) {
+class Team<T>(val name: String, val players: MutableList<in T>) where T:Player, T: Listener {
     fun addPlayers(player: T) {
         if (players.contains(player)) {
             println("Player ${player.name} is already playing!")
@@ -32,9 +43,18 @@ class Team<T: Player>(val name: String, val players: MutableList<in T>) {
 
 open class Player(val name: String)
 
-class FootballPlayer(name: String): Player(name)
+class FootballPlayer(name: String): Player(name), Listener {
+    override fun listen() {
+
+    }
+}
+
 class BaseballPlayer(name: String): Player(name)
 
 open class GamesPlayer(name: String): Player(name)
 
 class CounterStrikePlayer(name: String): GamesPlayer(name)
+
+fun <T> addPlayer(player: T) where T: Player, T: Listener {
+
+}
