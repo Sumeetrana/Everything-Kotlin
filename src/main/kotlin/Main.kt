@@ -1,15 +1,22 @@
 import javax.xml.crypto.Data
 
 fun main() {
-//    val footballTeam = Team<Player>(
-//        name = "Barcelona",
-//        mutableListOf<FootballPlayer>(FootballPlayer("messi"), FootballPlayer("ronaldo"))
-//    )
+    val mixedList = mutableListOf(1,2,3,4,5, 'a', 'b', 'c', 'd', 'e', 'f', "Hello", "World")
+    println(getSpecificTypes<Char>(mixedList))
+    println(getSpecificTypes<Int>(mixedList))
+    println(getSpecificTypes<String>(mixedList))
+}
 
-    val gamesTeam = Team<CounterStrikePlayer>(
-        "Games Team",
-        mutableListOf<GamesPlayer>(GamesPlayer("Player 1"), GamesPlayer("Player 2"))
-    )
+inline fun <reified T> getSpecificTypes(list: List<Any>): List<T> {
+    val newList = mutableListOf<T>()
+
+    for (element in list) {
+        if (element is T) {
+            newList.add(element)
+        }
+    }
+
+    return newList
 }
 
 class Team<T: Player>(val name: String, val players: MutableList<in T>) {
