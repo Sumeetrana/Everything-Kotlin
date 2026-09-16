@@ -1,9 +1,15 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val numbers = (0..13).toList()
-    println(numbers.chunked(3))
-    println(numbers.chunked(3){ it.sum() })
+    val numbers = listOf("one", "two", "three", "four", "five", "six")
 
-    println(numbers.windowed(3))
+    println(numbers[3])
+    println(numbers.elementAt(3))
+    println(numbers.first())
+    println(numbers.last())
+
+    println(numbers.first {it.length > 3})
+    println(numbers.last {it.startsWith("f")})
+    println(numbers.random())
+    println(numbers.isEmpty())
 }
