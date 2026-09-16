@@ -2,39 +2,41 @@ package com.example.main
 
 
 fun main() {
-    val myLambda = {a: Int, b: Int -> println(a+b)}
-    myLambda(5,10)
+//    val user = User().apply {
+//        firstName = "Alex"
+//        lastName = "Brian"
+//        age = 20
+//    }
+//
+//    with(user) {
+//        println(firstName)
+//        println(lastName)
+//        println(age)
+//    }
 
-    add(5, 10, {a: Int -> println(a+a)})
+//    with(user) {
+//        firstName = "Alex"
+//        lastName = "Silverson"
+//        age = 20
+//    }
 
+//    User("Alex", "Dobinca", 23).also {
+//        println(it)
+//    }
 
-    val loginButton = Button("Login", 34345, object : OnClickListener {
-        override fun onClick() {
+//    val text: String? = null
+//
+//    text?.let {
+//        println(it)
+//    }
 
-        }
-    })
+    val user: User? = null
 
-    val signupButton = Button("Signup", 2345, object : OnClickListener {
-        override fun onClick() {
-
-        }
-    })
-
-    upperCase("hello", {s: String -> s.uppercase()})
-    upperCase("hello"){it.uppercase()}
+    user?.run {
+        println(firstName)
+        println(lastName)
+        println(age)
+    }
 }
 
-fun add(a: Int, b: Int, action: (Int) -> Unit) {
-    action(a+b)
-}
-
-class Button(val text: String, val id: Int, val onClickListener: OnClickListener)
-
-interface OnClickListener {
-    fun onClick()
-}
-
-fun upperCase(str: String, myFunction: (String) -> String) {
-    val uppercasedWord = myFunction(str)
-    println(uppercasedWord)
-}
+data class User(val firstName: String, val lastName: String, val age: Int)
