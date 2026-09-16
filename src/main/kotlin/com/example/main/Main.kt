@@ -1,42 +1,21 @@
 package com.example.main
 
+import kotlin.concurrent.thread
 
 fun main() {
-//    val user = User().apply {
-//        firstName = "Alex"
-//        lastName = "Brian"
-//        age = 20
-//    }
-//
-//    with(user) {
-//        println(firstName)
-//        println(lastName)
-//        println(age)
-//    }
+    println("Hello world 1")
+    println("Hello world 2")
+    println("Hello world 3")
+    println("Hello world 4")
+    println("Hello world 5")
 
-//    with(user) {
-//        firstName = "Alex"
-//        lastName = "Silverson"
-//        age = 20
-//    }
-
-//    User("Alex", "Dobinca", 23).also {
-//        println(it)
-//    }
-
-//    val text: String? = null
-//
-//    text?.let {
-//        println(it)
-//    }
-
-    val user: User? = null
-
-    user?.run {
-        println(firstName)
-        println(lastName)
-        println(age)
+    thread {
+        Thread.sleep(5000)
+        println("Thread 2 has finished.")
     }
-}
 
-data class User(val firstName: String, val lastName: String, val age: Int)
+    println("Hello world 6")
+    println("Hello world 7")
+    println("Hello world 8")
+    println("Hello world 9")
+}
