@@ -16,13 +16,13 @@ fun main() {
     baseballTeam.addPlayers(baseballPlayer1)
 }
 
-class Team<T>(val name: String, val players: MutableList<T>) {
+class Team<T: Player>(val name: String, val players: MutableList<T>) {
     fun addPlayers(player: T) {
         if (players.contains(player)) {
-            println("Player ${(player as Player).name} is already playing!")
+            println("Player ${player.name} is already playing!")
         } else {
             players.add(player)
-            println("Player ${(player as Player).name} is added!")
+            println("Player ${player.name} is added!")
         }
     }
 }
