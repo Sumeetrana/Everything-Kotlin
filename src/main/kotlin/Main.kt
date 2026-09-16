@@ -1,15 +1,12 @@
 import javax.xml.crypto.Data
 
 fun main() {
-    val numbers = listOf("one", "two", "three", "four", "five", "six")
+    val numbers = listOf(6, 10, 14, 4, 100)
+    println("The sum is ${numbers.sum()}")
+    println("The count is: ${numbers.count()}")
+    println("The average is: ${numbers.average()}")
+    println("The max value is: ${numbers.maxOrNull()}")
+    println("The min value is: ${numbers.minOrNull()}")
+    println("The sum is: ${numbers.sumOf{ it * 2}}")
 
-    println(numbers[3])
-    println(numbers.elementAt(3))
-    println(numbers.first())
-    println(numbers.last())
-
-    println(numbers.first {it.length > 3})
-    println(numbers.last {it.startsWith("f")})
-    println(numbers.random())
-    println(numbers.isEmpty())
 }
