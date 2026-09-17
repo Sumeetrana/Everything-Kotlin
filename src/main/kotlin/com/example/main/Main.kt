@@ -26,6 +26,12 @@ fun main() {
         parentJob.join()
     }
 
+    parentJob.invokeOnCompletion {
+        it?.let {
+            println("Parent job FALED: ${it.message}")
+        } ?: println("Parent job SUCCESS")
+    }
+
     println("Total time: ${System.currentTimeMillis() - start} ms")
 
 
