@@ -2,6 +2,7 @@ package com.example.main
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -12,16 +13,13 @@ fun main() {
     val start = System.currentTimeMillis()
 
     val parentJob = CoroutineScope(Default).launch {
-        val job1 = launch {
-            val result1 = getData1(Thread.currentThread().name)
-            println(result1)
+        val jobDeferred1 = async {
+            getData1(Thread.currentThread().name)
         }
-//        job1.join()
-        val job2 = launch {
-            val result2 = getData2(Thread.currentThread().name)
-            println(result2)
+        val jobDeferred2 = async {
+            getData2(Thread.currentThread().name)
         }
-//        job2.join()
+        println(jobDeferred1.await() + "\n${jobDeferred2.await()}")
     }
 
     runBlocking {
