@@ -9,18 +9,41 @@ import kotlinx.coroutines.runBlocking
 fun main() {
     println("Main program starts: ${Thread.currentThread().name}")
 
+    val start = System.currentTimeMillis()
+
     val parentJob = CoroutineScope(Default).launch {
-        println("Fake work starts: ${Thread.currentThread().name}")
-        delay(2000)
-        println("Fake work finished: ${Thread.currentThread().name}")
+        val job1 = launch {
+            val result1 = getData1(Thread.currentThread().name)
+            println(result1)
+        }
+//        job1.join()
+        val job2 = launch {
+            val result2 = getData2(Thread.currentThread().name)
+            println(result2)
+        }
+//        job2.join()
     }
 
     runBlocking {
         parentJob.join()
     }
 
+    println("Total time: ${System.currentTimeMillis() - start} ms")
+
 
     println("Main program ends: ${Thread.currentThread().name}")
+}
 
+private suspend fun getData1(threadName: String): String {
+    println("Fake work1 starts: $threadName")
+    delay(2000)
+    println("Fake work1 finished: ${threadName}")
+    return "Result 1"
+}
 
+private suspend fun getData2(threadName: String): String {
+    println("Fake work2 starts: $threadName")
+    delay(2000)
+    println("Fake work2 finished: ${threadName}")
+    return "Result 2"
 }
